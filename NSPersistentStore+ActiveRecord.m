@@ -64,7 +64,7 @@ static NSPersistentStore *defaultPersistentStore = nil;
     }
     
     //set default url
-    return [NSURL fileURLWithPath:[[self applicationLibraryDirectory] stringByAppendingPathComponent:storeFileName]];
+    return [NSURL fileURLWithPath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:storeFileName]];
 }
 
 + (NSURL *)defaultLocalStoreUrl
