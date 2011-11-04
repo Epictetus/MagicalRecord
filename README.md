@@ -110,6 +110,30 @@ Customizing the Request
 	...
 
 	NSArray *people = [Person executeFetchRequest:peopleRequest];
+    
+#### Iterating through the results
+
+To iterate through the results you can use the extended array methods
+
+    [[Person findAll] each:^(Person* p) {
+        NSLog(@"Found %@",p.name);
+    }];
+
+Or if you need the index of the item in the array
+
+    NSLog(@"List of people");
+    [[Person findAll] eachWithIndex:^(Person* p, int index) {
+        NSLog(@"%d) %@",index,p.name);
+    }];
+    
+You can also use the map method to get a new array.
+
+    NSArray* fatherArray = [[Person findAll] map:^id(Person* p) {
+        return p.father;
+    }];
+    [fatherArray each:^(Person* p) {
+        NSLog(@"Found %@",p.name);
+    }];
 
 #### Find the number of entities
 
